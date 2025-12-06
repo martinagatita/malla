@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Malla Curricular Interactiva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="header__contenido">
+            <h1 class="header__titulo">Malla Curricular Interactiva</h1>
+            <p class="header__subtitulo">
+                Haz clic en los ramos para marcarlos como <strong>aprobados</strong>.
+                Los requisitos se validan automáticamente y tu progreso se guarda en el navegador.
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main">
+        <!-- Leyenda de estados -->
+        <section class="leyenda">
+            <div class="leyenda__item">
+                <span class="leyenda__color leyenda__color--normal"></span>
+                <span>Ramo disponible</span>
+            </div>
+            <div class="leyenda__item">
+                <span class="leyenda__color leyenda__color--aprobado"></span>
+                <span>Ramo aprobado</span>
+            </div>
+            <div class="leyenda__item">
+                <span class="leyenda__color leyenda__color--bloqueado"></span>
+                <span>Ramo bloqueado (faltan requisitos)</span>
+            </div>
+        </section>
+
+        <!-- Aquí se inyectan los semestres/ramos desde JavaScript -->
+        <section id="malla" class="malla"></section>
+    </main>
+
+    <!-- Mensaje flotante para errores/información -->
+    <div id="mensaje" class="mensaje" aria-live="polite"></div>
+
+    <!-- Lógica de la malla -->
+    <script src="script.js"></script>
+</body>
+</html>

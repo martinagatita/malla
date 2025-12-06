@@ -1,0 +1,303 @@
+/* ==========================
+   PALETA DE COLORES / BASE
+   ========================== */
+
+:root {
+    --bg-body: #f4f7f4;
+    --bg-card: #ffffff;
+    --bg-card-soft: #f0f5f0;
+
+    --primary: #1e8449;
+    --primary-light: #27ae60;
+    --primary-soft: #eafaf1;
+
+    --accent: #16a085;
+    --accent-soft: #d1f2eb;
+
+    --text-main: #1f2d24;
+    --text-muted: #7b8d7b;
+
+    --border-soft: #d2dfd2;
+
+    --danger: #c0392b;
+
+    --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================
+   RESETEO BÁSICO
+   ========================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================
+   HEADER
+   ========================== */
+
+.header {
+    background: linear-gradient(135deg, #145a32, #1e8449);
+    color: #ffffff;
+    padding: 1.75rem 1.25rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.header__contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header__titulo {
+    margin: 0 0 0.3rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.03em;
+}
+
+.header__subtitulo {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #d5f5e3;
+}
+
+/* ==========================
+   MAIN / LAYOUT
+   ========================== */
+
+.main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 2.5rem;
+}
+
+/* ==========================
+   LEYENDA
+   ========================== */
+
+.leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem;
+    background-color: var(--bg-card);
+    border-radius: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.leyenda__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.leyenda__color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border-soft);
+}
+
+.leyenda__color--normal {
+    background-color: var(--bg-card-soft);
+}
+
+.leyenda__color--aprobado {
+    background-color: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+.leyenda__color--bloqueado {
+    background-color: #fdecea;
+    border-color: #e57373;
+}
+
+/* ==========================
+   MALLA / GRID
+   ========================== */
+
+.malla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+}
+
+/* Tarjeta de semestre */
+
+.semestre {
+    background-color: var(--bg-card);
+    border-radius: 0.9rem;
+    padding: 1rem 0.9rem 1.1rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+}
+
+.semestre__titulo {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 0.4rem;
+}
+
+.semestre__ramos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+/* ==========================
+   RAMOS
+   ========================== */
+
+.ramo {
+    position: relative;
+    padding: 0.55rem 0.65rem;
+    border-radius: 0.7rem;
+    background-color: var(--bg-card-soft);
+    border: 1px solid var(--border-soft);
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition:
+        background-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.ramo:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.5);
+}
+
+.ramo:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    background-color: #e3efe3;
+}
+
+.ramo__nombre {
+    flex: 1;
+    line-height: 1.3;
+}
+
+/* Indicador circular a la izquierda */
+
+.ramo::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    flex-shrink: 0;
+}
+
+/* Estado: aprobado */
+
+.ramo.aprobado {
+    background-color: var(--primary-soft);
+    border-color: var(--primary-light);
+    color: #145a32;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+}
+
+.ramo.aprobado::before {
+    background-color: var(--accent);
+}
+
+/* Estado: bloqueado */
+
+.ramo.bloqueado:not(.aprobado) {
+    opacity: 0.55;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+.ramo.bloqueado:not(.aprobado)::before {
+    background-color: #e57373;
+}
+
+/* ==========================
+   MENSAJE FLOTANTE (TOAST)
+   ========================== */
+
+.mensaje {
+    position: fixed;
+    left: 50%;
+    bottom: 1.75rem;
+    transform: translateX(-50%) translateY(20px);
+    background-color: var(--danger);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    box-shadow: 0 8px 18px rgba(192, 57, 43, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 0.18s ease-out,
+        transform 0.18s ease-out;
+    z-index: 999;
+}
+
+.mensaje--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================
+   RESPONSIVE
+   ========================== */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1.25rem 1rem;
+    }
+
+    .header__titulo {
+        font-size: 1.45rem;
+    }
+
+    .main {
+        padding-inline: 1rem;
+    }
+
+    .semestre {
+        padding: 0.9rem 0.8rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .leyenda {
+        gap: 0.7rem;
+    }
+
+    .ramo {
+        font-size: 0.85rem;
+    }
+}
